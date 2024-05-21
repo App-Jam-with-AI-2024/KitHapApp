@@ -1,20 +1,43 @@
 import 'package:flutter/material.dart';
+//import 'package:flutter_tts/flutter_tts.dart';
 import '../colors.dart'; // colors.dart dosyasını içe aktarın
 
-class BookSummaryScreen extends StatelessWidget {
+class BookSummaryScreen extends StatefulWidget {
   final String title;
   final String author;
-  final String image;
   final String summary;
-
   const BookSummaryScreen({
     super.key,
     required this.title,
     required this.author,
-    required this.image,
     required this.summary,
   });
+  @override
+  State<BookSummaryScreen> createState() => _BookSummaryScreenState();
+}
 
+class _BookSummaryScreenState extends State<BookSummaryScreen> {
+  //FlutterTts _flutterTts = FlutterTts();
+  Map? _currentVoice;
+  @override
+  void initState() {
+    super.initState();
+    initTTS();
+  }
+
+  void initTTS() {
+    /*_flutterTts.getVoices.then((data) {
+      try {
+        List<Map> _voices = List<Map>.from(data);
+        _voices =
+            _voices.where((_voice) => _voice["name"].contains("tr")).toList();
+        print(_voices);
+        setState(() {});
+      } catch (e) {
+        print(e);
+      }
+    });*/
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,10 +59,9 @@ class BookSummaryScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.network(image),
                 const SizedBox(height: 16.0),
                 Text(
-                  title,
+                  widget.title,
                   style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -48,7 +70,7 @@ class BookSummaryScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8.0),
                 Text(
-                  'Yazar: $author',
+                  'Yazar: ${widget.author}',
                   style: const TextStyle(
                     fontSize: 18,
                     color: AppColors.textSecondary,
@@ -56,7 +78,7 @@ class BookSummaryScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16.0),
                 Text(
-                  summary,
+                  widget.summary,
                   style: const TextStyle(
                     fontSize: 16,
                     color: AppColors.textPrimary,

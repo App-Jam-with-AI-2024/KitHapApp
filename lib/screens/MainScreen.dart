@@ -10,7 +10,6 @@ import '../models/book.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
-
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -176,23 +175,21 @@ class _MainScreenState extends State<MainScreen> {
                                     color: AppColors.cardBackground,
                                     shadowColor: AppColors.cardShadow,
                                     child: ListTile(
-                                      leading: CircleAvatar(
-                                        backgroundImage: book
-                                                .imageUrl.isNotEmpty
-                                            ? NetworkImage(book.imageUrl)
-                                            : const AssetImage(
-                                                    'assets/images/book_cover.jpg')
-                                                as ImageProvider,
-                                      ),
                                       title: Text(
                                         book.title,
                                         style: const TextStyle(
                                             color: AppColors.textPrimary),
                                       ),
-                                      subtitle: Text(
-                                        book.author,
-                                        style: const TextStyle(
-                                            color: AppColors.textSecondary),
+                                      subtitle: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            book.author,
+                                            style: const TextStyle(
+                                                color: AppColors.textSecondary),
+                                          ),
+                                        ],
                                       ),
                                       trailing: const Icon(Icons.arrow_forward,
                                           color: AppColors.textPrimary),
@@ -204,9 +201,6 @@ class _MainScreenState extends State<MainScreen> {
                                                 BookSummaryScreen(
                                               title: book.title,
                                               author: book.author,
-                                              image: book.imageUrl.isNotEmpty
-                                                  ? book.imageUrl
-                                                  : 'assets/images/book_cover.jpg',
                                               summary: book.aiSummary,
                                             ),
                                           ),

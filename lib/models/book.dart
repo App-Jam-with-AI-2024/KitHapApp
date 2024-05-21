@@ -9,7 +9,6 @@ class Book {
   final String aiSummary;
   final String imageUrl;
   final String summaryLength;
-  final String summaryLanguage;
 
   Book({
     required this.id,
@@ -20,7 +19,6 @@ class Book {
     required this.aiSummary,
     required this.imageUrl,
     required this.summaryLength,
-    required this.summaryLanguage,
   });
 
   factory Book.fromMap(Map<String, dynamic> data, String documentId) {
@@ -34,7 +32,6 @@ class Book {
       imageUrl:
           data['imageUrl'] ?? 'https://cdn.bkmkitap.com/1984-13451065-64-B.jpg',
       summaryLength: data['summaryLength'] ?? '',
-      summaryLanguage: data['summaryLanguage'] ?? '',
     );
   }
 
@@ -47,12 +44,11 @@ class Book {
       'aiSummary': aiSummary,
       'imageUrl': imageUrl,
       'summaryLength': summaryLength,
-      'summaryLanguage': summaryLanguage,
     };
   }
 
   @override
   String toString() {
-    return 'Book{id: $id, title: $title, author: $author, creationDate: $creationDate, description: $description, aiSummary: $aiSummary, imageUrl: $imageUrl, summaryLength: $summaryLength, summaryLanguage: $summaryLanguage}';
+    return 'Book{id: $id, title: $title, author: $author, creationDate: $creationDate, description: $description, aiSummary: $aiSummary, imageUrl: $imageUrl, summaryLength: $summaryLength}';
   }
 }

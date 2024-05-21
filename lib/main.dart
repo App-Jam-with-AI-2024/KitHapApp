@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:kithap_app/const.dart';
 import 'package:kithap_app/provider/auth_provider.dart';
 import 'package:kithap_app/screens/LandingPage.dart';
 import 'package:provider/provider.dart';
@@ -8,6 +10,7 @@ import 'colors.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  Gemini.init(apiKey: GEMINI_API_KEY);
   runApp(MyApp());
 }
 
