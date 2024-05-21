@@ -12,10 +12,10 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController(text: "mcankirkgoz@gmail.com");
-  final _passwordController = TextEditingController(text: "123456");
-  final _firstNameController = TextEditingController(text: "Can");
-  final _lastNameController = TextEditingController(text: "Kırkgöz");
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
   bool _obscurePassword = true;
 
   @override
