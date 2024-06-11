@@ -119,7 +119,9 @@ class _MainScreenState extends State<MainScreen> {
                 return const Center(child: CircularProgressIndicator());
               } else {
                 return _filteredBooks.isEmpty
-                    ? const Center(child: Text('No books summarized yet.'))
+                    ? const Center(
+                        child: Text('Henüz bir özetiniz bulunmamaktadır.',
+                            style: TextStyle(color: AppColors.textPrimary)))
                     : _buildBookList();
               }
             },
@@ -143,7 +145,7 @@ class _MainScreenState extends State<MainScreen> {
               child: TextField(
                 controller: _searchController,
                 decoration: InputDecoration(
-                  hintText: 'Search...',
+                  hintText: 'Özetlerde Ara...',
                   hintStyle: const TextStyle(color: AppColors.textSecondary),
                   fillColor: AppColors.cardBackground,
                   filled: true,
@@ -166,7 +168,7 @@ class _MainScreenState extends State<MainScreen> {
             },
             itemBuilder: (BuildContext context) {
               return [
-                const PopupMenuItem(value: 'logout', child: Text('Logout')),
+                const PopupMenuItem(value: 'logout', child: Text('Çıkış Yap')),
               ];
             },
           ),
